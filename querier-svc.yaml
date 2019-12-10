@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: thanos-querier-tls
+  labels:
+    app: thanos-querier
+  name: thanos-querier
+spec:
+  ports:
+  - port: 9091
+    protocol: TCP
+    targetPort: web-proxy
+    name: web-proxy
+  - port: 9090
+    protocol: TCP
+    targetPort: http
+    name: grafana-access
+  selector:
+    app: thanos-querier
+  type: ClusterIP
+
