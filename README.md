@@ -1,0 +1,2 @@
+# thanos-manifests
+storing 
